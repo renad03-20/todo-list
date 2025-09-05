@@ -1,0 +1,29 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+
+# Environments #
+.env
+venv/
+env/
+*.pyenv
+.Python
+
+# IDEs and editors #
+.vscode/
+.idea/
+
+# OS files #
+.DS_Store
+Thumbs.db
+
+# Migrations (optional, but usually you keep them) #
+# Uncomment the next line if you want to ignore migrations completely
+*/migrations/
+
+# Static files  #
+# staticfiles/
