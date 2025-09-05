@@ -6,6 +6,13 @@ __pycache__/
 db.sqlite3
 media/
 
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
 # Environments #
 .env
 venv/
