@@ -1,11 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
-    <link rel="stylesheet" href="{% static 'css/todo.css' %}">
 </head>
 <style>
     /* Regular style */
@@ -31,11 +29,11 @@
         font-weight: 400;
         font-style: italic;
     }
+
     body {
         margin: 0;
         padding: 0;
         font-family: 'Alta', sans-serif;
-        background-image: url("{% static 'images/background.png' %}");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -44,7 +42,74 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        transition: background-image 0.5s ease-in-out;
     }
+
+    /* Default and background options */
+    .bg-workspace {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="desk" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23D2B48C;stop-opacity:1" /><stop offset="100%" style="stop-color:%23DEB887;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23desk)"/><rect x="100" y="300" width="400" height="200" rx="20" fill="%23CD853F" opacity="0.8"/><circle cx="200" cy="200" r="80" fill="%23F4A460" opacity="0.6"/><rect x="600" y="150" width="15" height="200" fill="%23A0522D"/><rect x="800" y="400" width="200" height="20" rx="10" fill="%23696969" opacity="0.7"/></svg>');
+    }
+
+    .bg-nature {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%2387CEEB;stop-opacity:1" /><stop offset="100%" style="stop-color:%2398FB98;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23sky)"/><circle cx="150" cy="150" r="50" fill="%23FFD700"/><polygon points="200,600 300,400 400,600" fill="%2332CD32"/><polygon points="500,600 600,350 700,600" fill="%2300FF00"/><polygon points="800,600 900,300 1000,600" fill="%23228B22"/></svg>');
+    }
+
+    .bg-ocean {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="ocean" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%2387CEEB;stop-opacity:1" /><stop offset="70%" style="stop-color:%234682B4;stop-opacity:1" /><stop offset="100%" style="stop-color:%23191970;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23ocean)"/><circle cx="200" cy="100" r="40" fill="%23FFD700" opacity="0.9"/><path d="M0,600 Q300,550 600,600 T1200,580 L1200,800 L0,800 Z" fill="%234169E1" opacity="0.6"/><path d="M0,650 Q400,600 800,650 T1200,630 L1200,800 L0,800 Z" fill="%23000080" opacity="0.4"/></svg>');
+    }
+
+    .bg-sunset {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sunset" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23FF6347;stop-opacity:1" /><stop offset="50%" style="stop-color:%23FF8C00;stop-opacity:1" /><stop offset="100%" style="stop-color:%23FFD700;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23sunset)"/><circle cx="600" cy="200" r="80" fill="%23FF4500" opacity="0.8"/><polygon points="100,800 200,600 300,800" fill="%23000000" opacity="0.6"/><polygon points="900,800 1000,550 1100,800" fill="%23000000" opacity="0.6"/></svg>');
+    }
+
+    .bg-city {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="city" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23483D8B;stop-opacity:1" /><stop offset="100%" style="stop-color:%23191970;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23city)"/><rect x="50" y="400" width="80" height="400" fill="%23696969"/><rect x="200" y="300" width="100" height="500" fill="%23778899"/><rect x="400" y="350" width="120" height="450" fill="%23696969"/><rect x="600" y="250" width="90" height="550" fill="%23778899"/><rect x="800" y="380" width="110" height="420" fill="%23696969"/><rect x="1000" y="320" width="85" height="480" fill="%23778899"/><circle cx="100" cy="150" r="30" fill="%23FFFF00" opacity="0.8"/></svg>');
+    }
+
+    .bg-space {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="space"><stop offset="0%" style="stop-color:%23000011;stop-opacity:1" /><stop offset="100%" style="stop-color:%23000000;stop-opacity:1" /></radialGradient></defs><rect width="100%" height="100%" fill="url(%23space)"/><circle cx="200" cy="150" r="2" fill="%23FFFFFF"/><circle cx="400" cy="100" r="1" fill="%23FFFFFF"/><circle cx="600" cy="200" r="1.5" fill="%23FFFFFF"/><circle cx="800" cy="120" r="1" fill="%23FFFFFF"/><circle cx="1000" cy="180" r="2" fill="%23FFFFFF"/><circle cx="150" cy="300" r="1" fill="%23FFFFFF"/><circle cx="900" cy="350" r="1.5" fill="%23FFFFFF"/><circle cx="300" cy="450" r="1" fill="%23FFFFFF"/><circle cx="700" cy="500" r="2" fill="%23FFFFFF"/><circle cx="500" cy="350" r="40" fill="%23C0C0C0" opacity="0.7"/></svg>');
+    }
+
+    /* Background selector styles */
+    .bg-selector {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        max-width: 250px;
+    }
+
+    .bg-option {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bg-option:hover {
+        transform: scale(1.1);
+        border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .bg-option.active {
+        border-color: #fff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .bg-workspace-thumb { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23D2B48C"/><rect x="5" y="15" width="15" height="8" fill="%23CD853F"/></svg>'); }
+    .bg-nature-thumb { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%2387CEEB"/><polygon points="10,35 15,20 20,35" fill="%2332CD32"/><polygon points="25,35 30,15 35,35" fill="%2300FF00"/></svg>'); }
+    .bg-ocean-thumb { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%234682B4"/><circle cx="30" cy="8" r="5" fill="%23FFD700"/><path d="M0,25 Q20,20 40,25 L40,40 L0,40 Z" fill="%234169E1"/></svg>'); }
+    .bg-sunset-thumb { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23FF8C00"/><circle cx="20" cy="15" r="8" fill="%23FF4500"/></svg>'); }
+    .bg-city-thumb { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23483D8B"/><rect x="5" y="20" width="8" height="20" fill="%23696969"/><rect x="15" y="15" width="10" height="25" fill="%23778899"/><rect x="27" y="18" width="8" height="22" fill="%23696969"/></svg>'); }
+    .bg-space-thumb { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23000011"/><circle cx="8" cy="8" r="1" fill="%23FFFFFF"/><circle cx="25" cy="12" r="1" fill="%23FFFFFF"/><circle cx="32" cy="25" r="1" fill="%23FFFFFF"/><circle cx="15" cy="30" r="1" fill="%23FFFFFF"/></svg>'); }
+
     .wrapper{
         display: flex;
         flex-direction: column;
@@ -61,10 +126,124 @@
         -webkit-backdrop-filter: blur(2.7px);
         border: 1px solid rgba(255, 255, 255, 0.31);
     }
+    .input-box{
+        width: 300px;
+        height: 50px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0;
+        padding: 0 10px;
+    }
+    .input-box .nameoftask{
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 18px;
+        color: #333;
+        border-bottom: 2px solid #333;
+    }
+    .input-group{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 5px;
+        align-items: center;
+    }
+
+    h2 {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .task-list {
+        width: 100%;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .task-list h3 {
+        color: #333;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .task-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .task-list li {
+        background: rgba(255, 255, 255, 0.1);
+        margin: 8px 0;
+        padding: 12px 15px;
+        border-radius: 8px;
+        color: #333;
+        font-weight: 500;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .button {
+        width: auto !important;
+    }
+
+    .button input[type="submit"] {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: #333;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .button input[type="submit"]:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+        .bg-selector {
+            top: 10px;
+            right: 10px;
+            max-width: 200px;
+        }
+        
+        .bg-option {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .wrapper {
+            width: 90%;
+            margin: 0 20px;
+        }
+    }
 </style>
-<body>
+<body class="bg-workspace">
+    <!-- Background Selector -->
+    <div class="bg-selector">
+        <div class="bg-option bg-workspace-thumb active" onclick="changeBackground('bg-workspace')" title="Workspace"></div>
+        <div class="bg-option bg-nature-thumb" onclick="changeBackground('bg-nature')" title="Nature"></div>
+        <div class="bg-option bg-ocean-thumb" onclick="changeBackground('bg-ocean')" title="Ocean"></div>
+        <div class="bg-option bg-sunset-thumb" onclick="changeBackground('bg-sunset')" title="Sunset"></div>
+        <div class="bg-option bg-city-thumb" onclick="changeBackground('bg-city')" title="City"></div>
+        <div class="bg-option bg-space-thumb" onclick="changeBackground('bg-space')" title="Space"></div>
+    </div>
+
+    <h2>ToDo List</h2>
     <div class="wrapper">
-        <h2>ToDo List</h2>
         <form action="#" method="POST">
             {% csrf_token %}
             <div class="input-box">
@@ -74,6 +253,7 @@
                 <input type="submit" value="Add Task">
             </div>
         </form>
+        {% csrf_token %}
         <div class="task-list">
             <h3>Your Tasks:</h3>
             <ul>
@@ -85,5 +265,37 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        function changeBackground(bgClass) {
+            // Remove all background classes
+            document.body.className = '';
+            
+            // Add the selected background class
+            document.body.classList.add(bgClass);
+            
+            // Update active state on selector buttons
+            document.querySelectorAll('.bg-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // Add active class to clicked option
+            event.target.classList.add('active');
+            
+            // Save preference to localStorage (if you want persistence)
+            localStorage.setItem('selectedBackground', bgClass);
+        }
+
+        // Load saved background on page load
+        window.addEventListener('load', function() {
+            const savedBg = localStorage.getItem('selectedBackground');
+            if (savedBg) {
+                changeBackground(savedBg);
+                // Update the active button
+                document.querySelector(`.${savedBg.replace('bg-', 'bg-')}-thumb`).classList.add('active');
+                document.querySelector('.bg-workspace-thumb').classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
