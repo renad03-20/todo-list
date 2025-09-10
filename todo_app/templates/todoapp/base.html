@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Todo App{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/todo.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-workspace">
+    <!-- Background Selector -->
+    <div class="bg-selector">
+        <div class="bg-option bg-workspace-thumb active" onclick="changeBackground('bg-workspace', event)" title="Workspace"></div>
+        <div class="bg-option bg-nature-thumb" onclick="changeBackground('bg-nature', event)" title="Nature"></div>
+        <div class="bg-option bg-ocean-thumb" onclick="changeBackground('bg-ocean', event)" title="Ocean"></div>
+        <div class="bg-option bg-sunset-thumb" onclick="changeBackground('bg-sunset', event)" title="Sunset"></div>
+        <div class="bg-option bg-city-thumb" onclick="changeBackground('bg-city', event)" title="City"></div>
+        <div class="bg-option bg-space-thumb" onclick="changeBackground('bg-space', event)" title="Space"></div>
+        <div class="bg-option bg-office-thumb" onclick="changeBackground('bg-office', event)" title="Office"></div>
+        <div class="bg-option bg-citynight-thumb" onclick="changeBackground('bg-citynight', event)" title="City Night"></div>
+        <div class="bg-option bg-streetwall-thumb" onclick="changeBackground('bg-streetwall', event)" title="Street Wall"></div>
+        <div class="bg-option bg-warmhouse-thumb" onclick="changeBackground('bg-warmhouse', event)" title="Warm House"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="wrapper">
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </div>
+
+    <!-- Base JavaScript -->
+    <script src="{% static 'js/todo.js' %}"></script>
+    
+    {% block extra_js %}
+    <!-- Page-specific JavaScript goes here -->
+    {% endblock %}
+</body>
+</html>
