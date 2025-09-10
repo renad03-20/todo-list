@@ -1,53 +1,410 @@
-/* Regular style */
-    @font-face {
-        font-family: 'Alta';
-        src: url('todo_app/static/fonts/Alta_Typeface/Alta_regular.otf') format('truetype');
-        font-weight: 400; /* normal weight */
-        font-style: normal;
-    }
+/* Hide scrollbar for Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+    display: none;
+}
 
-    /* light style */
-    @font-face {
-        font-family: 'Alta';
-        src: url('todo_app/static/fonts/Alta_Typeface/Alta_light.otf') format('truetype');
-        font-weight: 700; 
-        font-style: normal;
-    }
+/* Hide scrollbar for Firefox */
+* {
+    scrollbar-width: none;
+}
 
-    /* Italic style */
-    @font-face {
-        font-family: 'Alta';
-        src: url('todo_app/static/fonts/Alta_Typeface/Alta_caption.otf') format('truetype');
-        font-weight: 400;
-        font-style: italic;
+/* Font faces */
+@font-face {
+    font-family: 'Alta';
+    src: url('../fonts/Alta_Typeface/Alta_regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alta';
+    src: url('../fonts/Alta_Typeface/Alta_light.otf') format('opentype');
+    font-weight: 300; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alta';
+    src: url('../fonts/Alta_Typeface/Alta_caption.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Alta', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Background classes */
+.bg-workspace {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="desk" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23D2B48C;stop-opacity:1" /><stop offset="100%" style="stop-color:%23DEB887;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23desk)"/><rect x="100" y="300" width="400" height="200" rx="20" fill="%23CD853F" opacity="0.8"/><circle cx="200" cy="200" r="80" fill="%23F4A460" opacity="0.6"/><rect x="600" y="150" width="15" height="200" fill="%23A0522D"/><rect x="800" y="400" width="200" height="20" rx="10" fill="%23696969" opacity="0.7"/></svg>');
+}
+
+.bg-nature {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%2387CEEB;stop-opacity:1" /><stop offset="100%" style="stop-color:%2398FB98;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23sky)"/><circle cx="150" cy="150" r="50" fill="%23FFD700"/><polygon points="200,600 300,400 400,600" fill="%2332CD32"/><polygon points="500,600 600,350 700,600" fill="%2300FF00"/><polygon points="800,600 900,300 1000,600" fill="%23228B22"/></svg>');
+}
+
+.bg-ocean {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="ocean" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%2387CEEB;stop-opacity:1" /><stop offset="70%" style="stop-color:%234682B4;stop-opacity:1" /><stop offset="100%" style="stop-color:%23191970;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23ocean)"/><circle cx="200" cy="100" r="40" fill="%23FFD700" opacity="0.9"/><path d="M0,600 Q300,550 600,600 T1200,580 L1200,800 L0,800 Z" fill="%234169E1" opacity="0.6"/><path d="M0,650 Q400,600 800,650 T1200,630 L1200,800 L0,800 Z" fill="%23000080" opacity="0.4"/></svg>');
+}
+
+.bg-sunset {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sunset" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23FF6347;stop-opacity:1" /><stop offset="50%" style="stop-color:%23FF8C00;stop-opacity:1" /><stop offset="100%" style="stop-color:%23FFD700;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23sunset)"/><circle cx="600" cy="200" r="80" fill="%23FF4500" opacity="0.8"/><polygon points="100,800 200,600 300,800" fill="%23000000" opacity="0.6"/><polygon points="900,800 1000,550 1100,800" fill="%23000000" opacity="0.6"/></svg>');
+}
+
+.bg-city {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="city" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23483D8B;stop-opacity:1" /><stop offset="100%" style="stop-color:%23191970;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23city)"/><rect x="50" y="400" width="80" height="400" fill="%23696969"/><rect x="200" y="300" width="100" height="500" fill="%23778899"/><rect x="400" y="350" width="120" height="450" fill="%23696969"/><rect x="600" y="250" width="90" height="550" fill="%23778899"/><rect x="800" y="380" width="110" height="420" fill="%23696969"/><rect x="1000" y="320" width="85" height="480" fill="%23778899"/><circle cx="100" cy="150" r="30" fill="%23FFFF00" opacity="0.8"/></svg>');
+}
+
+.bg-space {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="space"><stop offset="0%" style="stop-color:%23000011;stop-opacity:1" /><stop offset="100%" style="stop-color:%23000000;stop-opacity:1" /></radialGradient></defs><rect width="100%" height="100%" fill="url(%23space)"/><circle cx="200" cy="150" r="2" fill="%23FFFFFF"/><circle cx="400" cy="100" r="1" fill="%23FFFFFF"/><circle cx="600" cy="200" r="1.5" fill="%23FFFFFF"/><circle cx="800" cy="120" r="1" fill="%23FFFFFF"/><circle cx="1000" cy="180" r="2" fill="%23FFFFFF"/><circle cx="150" cy="300" r="1" fill="%23FFFFFF"/><circle cx="900" cy="350" r="1.5" fill="%23FFFFFF"/><circle cx="300" cy="450" r="1" fill="%23FFFFFF"/><circle cx="700" cy="500" r="2" fill="%23FFFFFF"/><circle cx="500" cy="350" r="40" fill="%23C0C0C0" opacity="0.7"/></svg>');
+}
+
+.bg-office {
+    background-image: url('../images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-citynight {
+    background-image: url('../images/citynight.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-streetwall {
+    background-image: url('../images/streetwall.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-warmhouse {
+    background-image: url('../images/warmhouse.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Background selector styles */
+.bg-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 250px;
+}
+
+.bg-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-option:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.bg-option.active {
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Background thumbnails */
+.bg-workspace-thumb { 
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23D2B48C"/><rect x="5" y="15" width="15" height="8" fill="%23CD853F"/></svg>'); 
+}
+
+.bg-nature-thumb { 
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%2387CEEB"/><polygon points="10,35 15,20 20,35" fill="%2332CD32"/><polygon points="25,35 30,15 35,35" fill="%2300FF00"/></svg>'); 
+}
+
+.bg-ocean-thumb { 
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%234682B4"/><circle cx="30" cy="8" r="5" fill="%23FFD700"/><path d="M0,25 Q20,20 40,25 L40,40 L0,40 Z" fill="%234169E1"/></svg>'); 
+}
+
+.bg-sunset-thumb { 
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23FF8C00"/><circle cx="20" cy="15" r="8" fill="%23FF4500"/></svg>'); 
+}
+
+.bg-city-thumb { 
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23483D8B"/><rect x="5" y="20" width="8" height="20" fill="%23696969"/><rect x="15" y="15" width="10" height="25" fill="%23778899"/><rect x="27" y="18" width="8" height="22" fill="%23696969"/></svg>'); 
+}
+
+.bg-space-thumb { 
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="100%" height="100%" fill="%23000011"/><circle cx="8" cy="8" r="1" fill="%23FFFFFF"/><circle cx="25" cy="12" r="1" fill="%23FFFFFF"/><circle cx="32" cy="25" r="1" fill="%23FFFFFF"/><circle cx="15" cy="30" r="1" fill="%23FFFFFF"/></svg>'); 
+}
+
+.bg-office-thumb {
+    background-image: url('../images/background.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-citynight-thumb {
+    background-image: url('../images/citynight.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-streetwall-thumb {
+    background-image: url('../images/streetwall.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-warmhouse-thumb {
+    background-image: url('../images/warmhouse.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Main wrapper */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Change from center to flex-start */
+    width: 500px;
+    min-height: 500px; /* Use min-height instead of fixed height */
+    max-height: 80vh; /* Don't exceed viewport */
+    background: rgba(255, 255, 255, 0.11);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.7px);
+    -webkit-backdrop-filter: blur(2.7px);
+    border: 1px solid rgba(255, 255, 255, 0.31);
+    padding: 30px 20px; /* Add internal padding */
+    box-sizing: border-box;
+}
+
+/* Header styles */
+.header {
+    text-align: center;
+    margin: 20px 0 20px 0; 
+    padding: 0 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+/* Input styles */
+.input-group {
+    display: flex; /* Change from grid to flex for better control */
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Consistent gap */
+    margin: 20px 0;
+    width: 100%;
+}
+
+.nameoftask {
+    width: 280px; /* Slightly smaller to balance with button */
+    height: 45px;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 16px;
+    color: #333;
+    border-radius: 8px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nameoftask::placeholder {
+    color: #333;
+    font-size: 11px;
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+.nameoftask:focus::placeholder {
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.nameoftask:focus {
+    border-bottom: 2px solid #333;
+    transition: border-bottom 0.3s ease;
+}
+
+.nameoftask:hover {
+    border-bottom: 1px solid #333;
+    transition: border-bottom 0.3s ease;
+}
+
+.submit-btn {
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%; /* Make it perfectly round */
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Task list styles */
+h2 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.task-list {
+    width: 25rem;
+    max-height: 240px;
+    overflow-y: auto;
+    margin: 0 auto;
+}
+#task-list {
+    width: 24rem;
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 0 10px;
+}
+
+.task-list h3 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center; /* Ensure it's truly centered */
+    width: 100%; /* Take full width */
+    display: block; 
+}
+
+#task-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #333;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Task item styles */
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 30px;
+}
+
+.checkbox {
+    cursor: pointer;
+    margin-right: 15px;
+    font-size: 18px;
+    width: 24px; /* Fixed width for consistent alignment */
+    text-align: center;
+    flex-shrink: 0;
+}
+.task-text {
+    flex-grow: 1;
+    margin: 0 15px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+.delete-btn {
+    cursor: pointer;
+    color: #ff4757;
+    font-size: 16px;
+    width: 20px; /* Fixed width for consistent alignment */
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Don't let it shrink */
+}
+.delete-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+    transform: scale(1.1);
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task-item span {
+    flex-grow: 1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .bg-selector {
+        top: 10px;
+        right: 10px;
+        max-width: 200px;
     }
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Alta', sans-serif;
-        background-image: url("{% static 'images/background.png' %}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    
+    .bg-option {
+        width: 30px;
+        height: 30px;
     }
-    .wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 500px;
-        height: 500px;
-        background: #f2f2f2;    
-        /* From https://css.glass */
-        background: rgba(255, 255, 255, 0.11);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(2.7px);
-        -webkit-backdrop-filter: blur(2.7px);
-        border: 1px solid rgba(255, 255, 255, 0.31);
+    
+    .wrapper {
+        width: 90%;
+        margin: 0 20px;
     }
+}
