@@ -1,4 +1,5 @@
 {% extends 'todoapp/base.html' %}
+{% load static %} 
 
 {% block title %}Register - Todo App{% endblock %}
 
@@ -11,17 +12,20 @@
         <h1 class="title">Welcome back</h1>
         <p class="subtitle">Log to your account</p>
     </div>
-    
+
+    {% if messages %}
+        {% for message in messages%}
+            <h2 class="messages">{{message}}</h2>
+        {% endfor %}
+    {% endif %}
+
     <form method="POST" class="auth-form">
         {% csrf_token %}
         <div class="input-group">
             <input class="auth-input" type="text" name="username" placeholder="Username" required>
         </div>
         <div class="input-group">
-            <input class="auth-input" type="email" name="email" placeholder="Email" required>
-        </div>
-        <div class="input-group">
-            <input class="auth-input" type="password" name="password1" placeholder="Password" required>
+            <input class="auth-input" type="password" name="password" placeholder="Password" required>
         </div>
         <div class="button-group">
             <button class="auth-btn primary" type="submit">Login</button>
