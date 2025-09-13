@@ -335,6 +335,12 @@ h2 {
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
+/* #task-list li {
+    transition: transform 0.2s ease;
+}
+#task-list li:hover {
+    transform: translateY(-2px);
+} */
 
 /* Task item styles */
 .task-item {
@@ -388,6 +394,22 @@ h2 {
 
 .task-item span {
     flex-grow: 1;
+}
+.logout-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+.logout-link{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    margin-top: 20px;
+}
+.logout-link:hover {
+    color: #555;
 }
 
 /* Mobile responsiveness */
