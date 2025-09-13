@@ -25,12 +25,15 @@
                     <span class="task-text {% if task.completed %}completed{% endif %}">
                         {{ task.task }}
                     </span>
-                    <span class="delete-btn">❌</span>
+                    <span class="delete-btn">✖️</span>
                 </li>
             {% empty %}
                 <li>No tasks yet. Add one above to get started!</li>
             {% endfor %}
         </ul>
+    </div>
+    <div class="logout-container">
+        <a href="{% url 'logout' %}" class="logout-link">Logout</a>
     </div>
 {% endblock %}
 
