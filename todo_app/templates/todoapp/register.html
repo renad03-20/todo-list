@@ -12,7 +12,11 @@
         <h1 class="title">Join Us</h1>
         <p class="subtitle">Create your account</p>
     </div>
-    
+    {% if messages %}
+        {% for message in messages%}
+            <h2 class="messages">{{message}}</h2>
+        {% endfor %}
+    {% endif %}
     <form method="POST" class="auth-form">
         {% csrf_token %}
         <div class="input-group">
@@ -22,11 +26,9 @@
             <input class="auth-input" type="email" name="email" placeholder="Email" required>
         </div>
         <div class="input-group">
-            <input class="auth-input" type="password" name="password1" placeholder="Password" required>
+            <input class="auth-input" type="password" name="password" placeholder="Password" required>
         </div>
-        <div class="input-group">
-            <input class="auth-input" type="password" name="password2" placeholder="Confirm Password" required>
-        </div>
+        <div class="policy"></div>
         <div class="button-group">
             <button class="auth-btn primary" type="submit">Create Account</button>
         </div>
