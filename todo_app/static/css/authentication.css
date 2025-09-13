@@ -44,11 +44,11 @@ input:hover {
 .auth-btn {
     background-color: #333;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     font-weight:300;
     border: none;
-    border-radius: 25px; /* Make it perfectly round */
-    width: 200px;
+    border-radius: 10px; /* Make it perfectly round */
+    width: 150px;
     height: 40px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -60,4 +60,23 @@ input:hover {
 .auth-btn:hover {
     background-color: #555;
     transform: scale(1.05);
+}
+.messages{
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.auth-links{
+    margin-top: 10px;
+}
+.auth-links a{
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    margin-top: 20px;
+}
+.auth-links a:hover {
+    color: #555;
 }
